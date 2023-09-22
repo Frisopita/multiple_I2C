@@ -8,7 +8,6 @@
 
 Adafruit_BME280 bme;
 Adafruit_APDS9960 apds;
-
 MCP3221 mcp3221(0x4D);
 
 const uint16_t ref_voltage = 3300;
@@ -35,6 +34,7 @@ void setup() {
   }
 
   mcp3221.init();
+  Serial.println("Valid HUM sensor");
 
   apds.enableProximity(true);
   apds.enableGesture(true);
@@ -64,6 +64,7 @@ void loop() {
     Serial.println(" m");
   }
   if (gesture == APDS9960_RIGHT) {
+     Serial.println(">");
     Serial.print(F("ADC: "));
     Serial.print(result);
     Serial.print(F(", mV: "));
